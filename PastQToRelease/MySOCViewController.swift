@@ -111,9 +111,7 @@ class MySOCViewController: UIViewController,UITableViewDataSource,UITableViewDel
         
         userDefaults.set(hairetu, forKey: "Key")
         self.Table.reloadData()
-        
-        
-        
+
         
         
     }

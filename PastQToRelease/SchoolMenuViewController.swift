@@ -16,6 +16,7 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet var picker:UIPickerView!
     @IBOutlet var maxLabel:UILabel!
     @IBOutlet var Table:UITableView!
+    @IBOutlet var Btn:UIButton
     @IBOutlet var segcon:UISegmentedControl!
     let userDefaults:UserDefaults = UserDefaults.standard
     var Contentview: UIView!
@@ -43,8 +44,10 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
 
         for i in SoCs{
             if i == String(schoolname){
+        //追加済みのボタンデザイン
                 
             }else{
+                //ついかま
                 
             }
         }
