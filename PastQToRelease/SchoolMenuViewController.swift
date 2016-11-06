@@ -17,6 +17,7 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet var maxLabel:UILabel!
     @IBOutlet var Table:UITableView!
     @IBOutlet var segcon:UISegmentedControl!
+    @IBOutlet var Btn:UIButton!
     let userDefaults:UserDefaults = UserDefaults.standard
     var Contentview: UIView!
     var sentaku:String!
@@ -40,14 +41,21 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
         
         super.viewDidLoad()
         SoCs = (userDefaults.object(forKey: "Key") as? [String])!
-
+        var tof:Bool = false
         for i in SoCs{
             if i == String(schoolname){
-                
-            }else{
-                
+                tof = true
             }
         }
+        if tof == true{
+            Btn.setTitle("追加済み", for: .normal)
+            
+        }else{
+            Btn.setTitle("SoCに追加", for: .normal)
+            Btn.addTarget(self, action: #selector(SoC), for:.touchUpInside)
+            
+        }
+        
         
         
         Table?.delegate=self
@@ -155,10 +163,12 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
         }
     }
     
-    @IBAction func SoC(){
+    func SoC(){
         print("idは\(id)")
         ref.child("SoCdata").child(id).setValue(["school": schoolname,"user": (FIRAuth.auth()?.currentUser?.uid)!])
         
+        Btn.setTitle("追加済み", for: .normal)
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -191,7 +201,7 @@ class SchoolMenuViewController: UIViewController,UITableViewDelegate,UITableView
     
     
     
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Table?.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
         let index = ranck.index(of: Score[(indexPath as NSIndexPath).row])
@@ -272,5 +282,9 @@ extension SchoolMenuViewController: UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         sentaku = String(points[row])
     }
+    
+    
+    
+    
     
 }
