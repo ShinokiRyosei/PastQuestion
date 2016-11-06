@@ -113,6 +113,9 @@ class MySOCViewController: UIViewController,UITableViewDataSource,UITableViewDel
         self.Table.reloadData()
         
         
+        
+        
+        
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "あなたのSoCを登録しましょう。\nSoCは学校のメニューから登録できます"
