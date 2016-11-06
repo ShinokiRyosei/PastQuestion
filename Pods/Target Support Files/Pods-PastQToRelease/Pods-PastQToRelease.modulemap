@@ -1,0 +1,6 @@
+framework module Pods_PastQToRelease {
+  umbrella header "Pods-PastQToRelease-umbrella.h"
+
+  export *
+  module * { export * }
+}
